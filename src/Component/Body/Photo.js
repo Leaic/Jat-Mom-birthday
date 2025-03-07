@@ -39,7 +39,7 @@ function Photo({showForm, setShowForm}) {
                 />
             </div>
             <div className="flex flex-col justify-center">
-                <p className="font-bold">Souhaitez un meilleur voeux à Pascaline</p>
+                <p className="font-bold">Souhaitez un meilleur voeux à PASCALINE</p>
                 <button className="bg-green-400 rounded-xl p-2 font-bold" disabled={showForm} onClick={() => {setShowForm(true)}}>Ajouter un voeux</button>
             </div>
         </>

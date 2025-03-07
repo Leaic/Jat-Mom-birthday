@@ -47,8 +47,8 @@ function Whishes(){
         transition={{ duration: 0.8 }}
       >
         <div className="text-center">
-          <h3 className="font-bold text-lg">{wishes[currentWishIndex].name}</h3>
-          <p className="mt-2">{wishes[currentWishIndex].message}</p>
+          <h3 className="font-bold text-sm">{wishes[currentWishIndex].name}</h3>
+          <p className="mt-2 text-xl">{wishes[currentWishIndex].message}</p>
         </div>
       </motion.div>
     </div>

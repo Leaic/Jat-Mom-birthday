@@ -1,5 +1,5 @@
 
-import Whishes from './../Body/Wishes';
+import Wishes from './../Body/Wishes';
 import Photo from './../Body/Photo';
 import { useState } from 'react';
 import Form from './../Body/Form';
@@ -7,14 +7,28 @@ import Form from './../Body/Form';
 export const Body = ({headerItem}) => {
 
   const [showForm, setShowForm] = useState(false);
+  const [wishes, setWishes] = useState([
+    {
+      "key": 0,
+      'name': "Erica",
+      'wish': "Tout mes voeux de bonheur"
+    },
+    {
+        "key": 1,
+        'name': "Flavia",
+        'wish': "Tout mes voeux de bonheur !!!"
+    }
+  ]);
+
+  console.log("WISHES GENERAL ============================= ", wishes, wishes.length)
 
   return (
-    <div>
+    <div className='h-[95%]'>
       <div className={`w-full h-full border-4 flex flex-col gap-2 items-center justify-center p-5`}
         style={{ backgroundImage: "url('/Image/birthday.jpg')", backgroundSize: "cover", backgroundPosition: "center"}}
       >
         {headerItem === "photo" && <Photo setShowForm={setShowForm} showForm={showForm}/>}
-        {headerItem === "voeux" && <Whishes />}
+        {headerItem === "voeux" && <Wishes wishes = {wishes}/>}
       </div>
 
       {showForm && (
@@ -27,7 +41,7 @@ export const Body = ({headerItem}) => {
               <div className="text-lg font-bold">Formulaire de Voeux</div>
               <button disabled={!showForm} onClick={() => {setShowForm(false)}}>❌</button>
           </div>
-          <Form setShowForm={setShowForm} showForm={showForm}/>
+          <Form setShowForm={setShowForm} showForm={showForm} setWishes = {setWishes} wishes={wishes}/>
       </div>}
     </div>
   );

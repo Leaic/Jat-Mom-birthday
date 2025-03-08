@@ -4,11 +4,10 @@ import { motion } from "framer-motion";
 function Photo({showForm, setShowForm}) {
 
     let image = [
-        '/Image/Dessin.png',
-        '/Image/Fichier 2@4x.png',
         '/Image/Jat-logo-3.svg',
+        '/Image/Dessin.png',
         '/Image/logo192.png',
-        '/logo512.png'
+        '/Image/logo512.png'
     ]
 
     const [index, setIndex] = useState(0)
@@ -24,14 +23,14 @@ function Photo({showForm, setShowForm}) {
     return(
         <>
             <div
-                className="h-[30em] w-[90%] max-w-[500px]
+                className="h-[35em] w-[90%] max-w-[500px]
                 border-2 border-green-200 flex items-center overflow-hidden bg-cover bg-center bg-no-repeat rounded-md shadow drop-shadow-lg"
             >
                 <motion.img
                 key={index}
                 src={image[index]}
                 alt={`Image ${index}`}
-                className="h-full w-full object-fill"
+                className="h-full w-full object-cover"
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}

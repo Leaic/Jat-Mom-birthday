@@ -1,41 +1,35 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-function Whishes(){
+function Wishes({wishes}){
 
-    const wishes = [
-        {
-            "key": 0,
-            'name': "Erica",
-            'message': "Tout mes voeux de bonheur"
-        },
-        {
-            "key": 2,
-            'name': "Flavia",
-            'message': "Tout mes voeux de bonheur !!!"
-        }
-    ]
+  const [currentWishIndex, setCurrentWishIndex] = useState(0);
+  console.log('WISHES CURRENT Wihes ========================== ', wishes)
 
-    const [currentWishIndex, setCurrentWishIndex] = useState(0);
 
   useEffect(() => {
     // Fonction pour calculer le délai basé sur la longueur du message
+
     const getIntervalTime = () => {
-      const currentMessage = wishes[currentWishIndex].message;
+
+      const currentMessage = wishes[currentWishIndex].wish;
 
       return currentMessage.length >= 500 ? 10000 : currentMessage.length > 200 ? 5000 : 3000;
     };
   
     const interval = setInterval(() => {
+      // Ajouter 1 a l'index actuel (prevIndex +1) et revenir a l'index initiale si la longueur du tableau est atteint (% wishes.length)
       setCurrentWishIndex((prevIndex) => (prevIndex + 1) % wishes.length);
     }, getIntervalTime());
   
     return () => clearInterval(interval); // Nettoyer l'intervalle au démontage du composant
   }, [currentWishIndex, wishes, wishes.length]);
 
+  console.log("WISHES CURRENT INDEX NAME ====================== ", currentWishIndex, wishes[currentWishIndex])
+
   return (
     <div
-        className="h-[34em] w-[90%] max-w-[500px]
+        className="h-[35em] w-[90%] max-w-[500px]
         border-2 border-green-200 flex items-center overflow-hidden bg-cover bg-center bg-no-repeat rounded-md shadow drop-shadow-lg"
     >
       <motion.div
@@ -46,13 +40,15 @@ function Whishes(){
         exit={{ opacity: 0, x: -100 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="text-center">
-          <h3 className="font-bold text-sm">{wishes[currentWishIndex].name}</h3>
-          <p className="mt-2 text-xl">{wishes[currentWishIndex].message}</p>
-        </div>
+        {wishes[currentWishIndex].name !== "" && wishes[currentWishIndex].wish !== "" && 
+          <div className="text-center">
+            <h3 className="font-bold text-sm">{wishes[currentWishIndex].name}</h3>
+            <p className="mt-2 text-xl">{wishes[currentWishIndex].wish}</p>
+          </div>
+        }
       </motion.div>
     </div>
   );
 }
 
-export default Whishes;
+export default Wishes;

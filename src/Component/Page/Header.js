@@ -1,5 +1,5 @@
 
-const Header = ({headerItem, setHeaderItem}) => {
+const Header = ({headerItem, setHeaderItem, setCloseHeader}) => {
 
     let headerItems = ["photo", "voeux"];
 
@@ -19,6 +19,7 @@ const Header = ({headerItem, setHeaderItem}) => {
                         {item}
                     </button>
                 ))}
+                <button onClick={() => setCloseHeader(true)}>❌</button>
             </div>
         </div>
     )
